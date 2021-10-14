@@ -16,7 +16,7 @@ lineReader.on('line', function(line) {
     tempArray.push(line + '\n')
     if (count >= 4750000) {
         fileCount++;
-        outStream.write(tempArray.sort().join(''));
+        outStream.write(tempArray.sort((a, b) => a - b).join(''));
         outStream.close();
         outfileName = `subfile${fileCount}.txt`;
         outStream = fs.createWriteStream(outfileName);
